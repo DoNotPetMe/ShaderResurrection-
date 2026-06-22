@@ -1,0 +1,18 @@
+{
+  "name": "Inferno",
+  "description": "Animated rising fire with an emissive ember outline and rim glow.",
+  "floats": {
+    "_FireEnabled": 1, "_FireSpeed": 1.6, "_FireScale": 1.2, "_FireHeight": 1.0,
+    "_FireSharpness": 2.4, "_FireStrength": 3.0, "_FireDistortion": 0.7,
+    "_FireDirectionMode": 1, "_FireFlicker": 0.6,
+    "_OutlineWidth": 0.6, "_OutlineEmission": 3.0, "_OutlineNoise": 0.4,
+    "_RimEnabled": 1, "_RimWidth": 0.6, "_RimSharpness": 2.0, "_RimStrength": 2.0
+  },
+  "colors": {
+    "_FireColorInner": [1.0, 0.95, 0.5, 1.0],
+    "_FireColorOuter": [1.0, 0.4, 0.05, 1.0],
+    "_FireColorTip":   [0.7, 0.04, 0.0, 1.0],
+    "_OutlineColor":   [1.0, 0.3, 0.05, 1.0],
+    "_RimColor":       [1.0, 0.45, 0.1, 1.0]
+  }
+}

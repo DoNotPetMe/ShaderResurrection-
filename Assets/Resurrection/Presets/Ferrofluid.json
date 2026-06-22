@@ -1,0 +1,20 @@
+{
+  "name": "Ferrofluid",
+  "description": "Black glossy liquid that drips toward the floor as the avatar tilts.",
+  "floats": {
+    "_LiquidEnabled": 1, "_LiquidType": 0, "_FlowState": 2,
+    "_LiquidCoverage": 0.55, "_LiquidEdgeWidth": 0.06, "_LiquidScale": 4.0,
+    "_LiquidFlowSpeed": 0.5, "_LiquidDripLength": 1.4, "_LiquidViscosity": 0.35,
+    "_LiquidSurfaceTension": 1.4, "_LiquidMetallic": 0.95, "_LiquidSmoothness": 0.92,
+    "_LiquidFresnel": 1.5, "_LiquidGravityStrength": 1.0, "_LiquidNormalStrength": 0.7,
+    "_LiquidParticles": 0.15, "_Metallic": 0.2, "_Glossiness": 0.6
+  },
+  "colors": {
+    "_LiquidColor":     [0.02, 0.02, 0.03, 1.0],
+    "_LiquidColorDeep": [0.0, 0.0, 0.0, 1.0],
+    "_LiquidSpecColor": [0.55, 0.55, 0.7, 1.0]
+  },
+  "vectors": {
+    "_GravityDirection": [0, -1, 0, 0]
+  }
+}

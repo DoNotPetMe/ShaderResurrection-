@@ -1,0 +1,20 @@
+{
+  "name": "Water Flow",
+  "description": "Clear, smooth water sheeting down the surface, gravity aware.",
+  "floats": {
+    "_LiquidEnabled": 1, "_LiquidType": 1, "_FlowState": 1,
+    "_LiquidCoverage": 0.7, "_LiquidEdgeWidth": 0.12, "_LiquidScale": 6.0,
+    "_LiquidFlowSpeed": 0.9, "_LiquidDripLength": 0.6, "_LiquidViscosity": 0.1,
+    "_LiquidSurfaceTension": 0.6, "_LiquidMetallic": 0.0, "_LiquidSmoothness": 0.97,
+    "_LiquidFresnel": 2.0, "_LiquidGravityStrength": 1.0, "_LiquidNormalStrength": 0.4,
+    "_LiquidParticles": 0.3, "_LiquidRefraction": 0.4
+  },
+  "colors": {
+    "_LiquidColor":     [0.5, 0.75, 0.9, 1.0],
+    "_LiquidColorDeep": [0.05, 0.25, 0.4, 1.0],
+    "_LiquidSpecColor": [0.9, 0.97, 1.0, 1.0]
+  },
+  "vectors": {
+    "_GravityDirection": [0, -1, 0, 0]
+  }
+}
