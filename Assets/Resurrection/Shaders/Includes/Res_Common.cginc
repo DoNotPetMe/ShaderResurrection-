@@ -38,6 +38,7 @@ struct v2f
     float3 viewDir    : TEXCOORD6;
     UNITY_FOG_COORDS(7)
     UNITY_SHADOW_COORDS(8)
+    UNITY_VERTEX_INPUT_INSTANCE_ID   // needed so frag UNITY_SETUP_INSTANCE_ID can read i.instanceID
     UNITY_VERTEX_OUTPUT_STEREO
 };
 
@@ -110,7 +111,7 @@ float3 res_hueShift(float3 col, float shift)
 float3 res_saturation(float3 col, float sat)
 {
     float l = dot(col, float3(0.2126, 0.7152, 0.0722));
-    return lerp(l.xxx, col, sat);
+    return lerp((float3)l, col, sat);
 }
 
 float3 res_contrast(float3 col, float c)
