@@ -176,7 +176,7 @@ Shader "Resurrection/Master"
         Pass
         {
             Name "OUTLINE"
-            Tags { "LightMode"="ForwardBase" }
+            Tags {}
             Cull Front
             ZWrite On
             Blend SrcAlpha OneMinusSrcAlpha

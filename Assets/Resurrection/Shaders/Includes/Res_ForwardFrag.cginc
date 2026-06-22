@@ -95,10 +95,13 @@ float4 res_frag(v2f i, bool isBase)
     // Ambient / light probe diffuse.
     float3 ambient = ShadeSH9(float4(N, 1.0));
     if (_LightingMode > 0.5)
-        ambient = max(ambient, _MinBrightness.xxx); // flat mode keeps things readable
+        ambient = max(ambient, (float3)_MinBrightness); // flat mode keeps things readable
 
     if (_MonochromeLighting > 0.5)
-        lightColor = res_luminance(lightColor).xxx;
+    {
+        float mono = res_luminance(lightColor);
+        lightColor = float3(mono, mono, mono);
+    }
 
     float3 lit = res_evaluateLight(s, V, lightDir, lightColor, atten, ambient, isBase);
 

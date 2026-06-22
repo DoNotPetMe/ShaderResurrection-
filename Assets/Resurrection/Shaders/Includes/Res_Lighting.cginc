@@ -7,6 +7,11 @@
 //  realistic & toon modes, brightness clamping.
 // =====================================================================
 
+// UnityStandardConfig.cginc defines this as 6; guard in case it wasn't included.
+#ifndef UNITY_SPECCUBE_LOD_STEPS
+#define UNITY_SPECCUBE_LOD_STEPS 6
+#endif
+
 struct ResSurface
 {
     float3 albedo;
@@ -74,7 +79,7 @@ float3 res_evaluateLight(ResSurface s, float3 viewDir, float3 lightDir,
     diffTerm = lerp(diffTerm, 1.0, 1.0 - _ShadowStrength);
 
     // F0: dielectric 0.04 lerped to albedo by metallic
-    float3 F0 = lerp(0.04 * _Reflectance.xxx * 4.0, s.albedo, s.metallic);
+    float3 F0 = lerp((float3)(0.04 * _Reflectance * 4.0), s.albedo, s.metallic);
 
     // Direct specular (GGX)
     float D = res_D_GGX(NoH, roughness);
