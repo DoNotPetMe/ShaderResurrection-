@@ -17,6 +17,7 @@ struct ResLiquid
     float3 color;
     float3 specColor;
     float  coverage;     // 0..1 mask of where liquid is
+    float  clearMask;    // 0..1 where the fluid is thin/transparent (shows base through)
     float  metallic;
     float  smoothness;
     float3 normalOffset;  // tangent-space wobble to perturb the surface
@@ -119,12 +120,14 @@ ResLiquid res_computeLiquid(float2 uv, float3 worldPos, float3 worldNormal,
         coverage = saturate(coverage + smoothstep(0.55, 0.75, finger) * gravityFacing * 0.5);
     }
 
-    // Particles / bubbles inside the liquid body.
-    float particles = 0;
+    // Clear-fluid windows: thin / bubble areas where the fluid is transparent,
+    // revealing the base surface underneath (the white you see in ferrofluid
+    // videos is the object itself showing through clear liquid, not a highlight).
+    float clearFluid = 0;
     if (_LiquidParticles > 0.001)
     {
         float p = res_valueNoise(luv * 9.0 + scroll * 2.0);
-        particles = smoothstep(1.0 - _LiquidParticles * 0.3, 1.0, p) * coverage;
+        clearFluid = smoothstep(1.0 - _LiquidParticles * 0.3, 1.0, p) * coverage;
     }
 
     // --- Surface wobble normal (tangent space) ---
@@ -143,12 +146,10 @@ ResLiquid res_computeLiquid(float2 uv, float3 worldPos, float3 worldNormal,
     float smoothness = _LiquidSmoothness;
     res_applyLiquidType(metallic, smoothness);
 
-    // Particles read as bright surface tension highlights.
-    col = lerp(col, _LiquidSpecColor.rgb, particles);
-
     lq.color     = col;
     lq.specColor = _LiquidSpecColor.rgb;
     lq.coverage  = saturate(coverage);
+    lq.clearMask = clearFluid;      // frag uses this to punch through to base
     lq.metallic  = metallic;
     lq.smoothness= smoothness;
     lq.fresnel   = _LiquidFresnel;

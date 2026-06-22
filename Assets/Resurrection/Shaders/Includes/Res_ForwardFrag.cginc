@@ -43,6 +43,9 @@ float4 res_frag(v2f i, bool isBase)
     // ===================================================================
     //  LIQUID coating (overrides surface where covered)
     // ===================================================================
+    float3 baseAlbedo    = albedo;   // saved so clear-fluid areas can show through
+    float  baseMetallic  = metallic;
+
     ResLiquid lq = res_computeLiquid(i.uv, i.worldPos, N, T, B);
     if (lq.coverage > 0.0)
     {
@@ -53,6 +56,18 @@ float4 res_frag(v2f i, bool isBase)
         albedo     = lerp(albedo, lq.color, lq.coverage);
         metallic   = lerp(metallic, lq.metallic, lq.coverage);
         smoothness = lerp(smoothness, lq.smoothness, lq.coverage);
+
+        // Clear-fluid windows: punch back through to the base surface.
+        // The fluid is still there (keeps high smoothness for the glassy
+        // surface sheen) but its color/metallic disappear, so the object
+        // underneath shows through — just like the white spheres in the
+        // ferrofluid reference.
+        if (lq.clearMask > 0.0)
+        {
+            albedo   = lerp(albedo, baseAlbedo, lq.clearMask);
+            metallic = lerp(metallic, baseMetallic, lq.clearMask);
+            // smoothness stays high: clear fluid still has a glassy surface
+        }
     }
 
     // ---- Build surface ----
