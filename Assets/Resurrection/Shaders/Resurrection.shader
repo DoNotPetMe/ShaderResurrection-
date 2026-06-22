@@ -31,7 +31,7 @@ Shader "Resurrection/Master"
         [Toggle] _GICubeReflection ("Reflection Probes", Float) = 1
 
         // ---- Lighting ----
-        [Enum(Realistic,0,Flat/Toon,1)] _LightingMode ("Lighting Mode", Float) = 0
+        [Enum(Realistic,0,Flat_Toon,1)] _LightingMode ("Lighting Mode", Float) = 0
         _MinBrightness ("Min Brightness", Range(0,1)) = 0.05
         _MaxBrightness ("Max Brightness", Range(0,4)) = 1.5
         _ShadowStrength ("Shadow Strength", Range(0,1)) = 1
@@ -71,7 +71,7 @@ Shader "Resurrection/Master"
         _FireSharpness ("Fire Sharpness", Range(0.1,8)) = 2
         _FireStrength ("Fire Strength", Range(0,8)) = 2
         _FireDistortion ("Fire Distortion", Range(0,2)) = 0.5
-        [Enum(UV Up,0,World Up,1)] _FireDirectionMode ("Fire Direction", Float) = 1
+        [Enum(UV_Up,0,World_Up,1)] _FireDirectionMode ("Fire Direction", Float) = 1
         _FireFlicker ("Fire Flicker", Range(0,1)) = 0.5
         _FireMask ("Fire Mask", 2D) = "white" {}
 
