@@ -1,12 +1,8 @@
 # 🜂 Resurrection — VRChat Master Shader
 
-> *Reborn for VRChat.* A modular avatar shader in the spirit of Poiyomi Pro — but with its
-> own look, its own menu, and a few tricks Poiyomi doesn't have: **procedural fire** and a
-> **gravity / tilt-reactive liquid (ferrofluid) coating**.
+> *Reborn for VRChat.* A modular avatar shader —
 
-Built for the **Built-in Render Pipeline** (Unity 2022 LTS — the version VRChat ships with).
-
-![banner](docs/banner-placeholder.png)
+Built for the **Built-in Render Pipeline**
 
 ---
 
